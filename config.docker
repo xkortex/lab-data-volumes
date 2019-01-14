@@ -1,0 +1,6 @@
+FROM busybox as base
+
+WORKDIR /config
+
+COPY config.conf .
+RUN ls

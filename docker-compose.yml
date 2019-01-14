@@ -10,8 +10,10 @@ services:
     command: ["bash"]
     volumes:
       - /path/to/config/from/add-data:/data
+      - data-volume:/config
     depends_on: 
       - add-data
+      - configc
   add-data:
     build:
       context: .
@@ -20,4 +22,20 @@ services:
     command: "true"
     volumes:
       - /path/to/config/from/add-data:/data
+  configc:
+    build:
+      context: .
+      dockerfile: ./config.docker
+    image: i_config
+    tty: true
+    command: "true"
+    volumes:
+    - data-volume:/config
+
+volumes:
+  data-volume:
+    name: george
+    labels:
+      com.kitware.description: "Data volume description. Cool, huh?"
+      com.kitware.department: "CV"
 ...
