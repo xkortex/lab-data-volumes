@@ -1,0 +1,27 @@
+---
+version: '3.4'
+services:
+  gostuff:
+    build:
+      context: .
+      dockerfile: ./gostuff.docker
+    image: i_gostuff
+    tty: true
+    command: ["bash"]
+    volumes:
+      - data-volume:/config
+  add-data:
+    build:
+      context: .
+      dockerfile: ./add-data.docker
+    image: i_add_data
+    command: "true"
+    volumes:
+    - data-volume:/config
+volumes:
+  data-volume:
+    name: george
+    labels:
+      com.kitware.description: "Data volume description. Cool, huh?"
+      com.kitware.department: "CV"
+...

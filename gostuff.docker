@@ -1,0 +1,21 @@
+FROM golang:1.11.4 as base_go
+
+WORKDIR /root
+
+ENV APT_FLAGS -qq
+RUN echo $APT_FLAGS
+
+RUN apt-get update $APT_FLAGS && apt-get install $APT_FLAGS  \
+    git
+
+## Upgrade python 3.4 to python 3.5
+RUN apt-get remove $APT_FLAGS python* \
+    && apt-get update $APT_FLAGS && apt-get install $APT_FLAGS \
+    git \
+    python3.5-dev \
+    python3-pip \
+    && apt-get clean
+
+RUN pip3 install --upgrade pip==18.1
+
+
