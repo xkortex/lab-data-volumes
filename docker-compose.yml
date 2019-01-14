@@ -9,19 +9,15 @@ services:
     tty: true
     command: ["bash"]
     volumes:
-      - data-volume:/config
+      - /path/to/config/from/add-data:/data
+    depends_on: 
+      - add-data
   add-data:
     build:
       context: .
       dockerfile: ./add-data.docker
-    image: i_add_data
+    image: data-container
     command: "true"
     volumes:
-    - data-volume:/config
-volumes:
-  data-volume:
-    name: george
-    labels:
-      com.kitware.description: "Data volume description. Cool, huh?"
-      com.kitware.department: "CV"
+      - /path/to/config/from/add-data:/data
 ...
