@@ -1,9 +1,8 @@
-FROM golang:1.11.4 as base_go
+FROM data-container
 
 WORKDIR /root
 
-ENV APT_FLAGS -qq
-RUN echo $APT_FLAGS
+ARG APT_FLAGS=-qq
 
 RUN apt-get update $APT_FLAGS && apt-get install $APT_FLAGS  \
     git

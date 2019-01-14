@@ -1,7 +1,5 @@
-FROM busybox as base
+FROM golang:1.11.4 
 
-WORKDIR /config
-
-ADD config.conf .
-RUN ls
+RUN mkdir /data
+ADD config.conf /data/
 
