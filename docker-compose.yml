@@ -2,6 +2,7 @@
 version: '3.4'
 services:
   gostuff:
+    container_name: gostuff
     build:
       context: .
       dockerfile: ./gostuff.docker
@@ -11,6 +12,7 @@ services:
     volumes:
       - data-volume:/config
   add-data:
+    container_name: add-data
     build:
       context: .
       dockerfile: ./add-data.docker
