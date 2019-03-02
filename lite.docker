@@ -1,0 +1,12 @@
+FROM alpine:latest
+
+WORKDIR /root
+
+# RUN apk update && apk upgrade && apk add bash
+
+# this is just dummy stuff
+RUN echo "hello world" > hello.txt
+
+
+
+

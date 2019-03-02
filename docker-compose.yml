@@ -1,14 +1,16 @@
 ---
 version: '3.4'
 services:
-  gostuff:
-    container_name: gostuff
+  lite:
+    container_name: lite
+    depends_on:
+      - add-data
     build:
       context: .
-      dockerfile: ./gostuff.docker
-    image: i_gostuff
+      dockerfile: ./lite.docker
+    image: i-lite
     tty: true
-    command: ["bash"]
+    command: ["sh"]
     volumes:
       - data-volume:/config
   add-data:
@@ -16,7 +18,7 @@ services:
     build:
       context: .
       dockerfile: ./add-data.docker
-    image: i_add_data
+    image: i-add-data
     command: "true"
     volumes:
     - data-volume:/config

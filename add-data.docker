@@ -1,7 +1,5 @@
 FROM busybox as base
 
-WORKDIR /config
+ADD config.conf /config/
 
-ADD config.conf .
-RUN ls
 
